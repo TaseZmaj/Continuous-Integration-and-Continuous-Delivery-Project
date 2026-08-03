@@ -19,6 +19,7 @@ jobs:
         working-directory: frontend
         run: |
           npm install --legacy-peer-deps
+          chmod +x node_modules/.bin/*
           npm run build
 
       - name: Build backend
