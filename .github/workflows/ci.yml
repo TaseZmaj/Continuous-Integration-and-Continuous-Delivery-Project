@@ -18,13 +18,13 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: |
-          npm install
+          npm ci
           npm run build
 
       - name: Build backend
         working-directory: backend
         run: |
-          npm install --omit=dev
+          npm ci --omit=dev
 
       - name: Log in to Docker Hub
         if: github.event_name == 'push'
