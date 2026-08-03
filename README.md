@@ -1,4 +1,4 @@
-# CI/CD Project
+# Continuous Integration and Delivery Project
 
 This project is a simple full-stack CRUD application built for the DevOps course from my faculty. It includes a React frontend, a Node.js/Express backend, and a PostgreSQL database, all containerized and prepared for Docker Compose, Github CI, and Kubernetes deployment.
 
