@@ -2,9 +2,11 @@
 
 This project is a simple full-stack CRUD application built for the DevOps course from my faculty. It includes a React frontend, a Node.js/Express backend, and a PostgreSQL database, all containerized and prepared for Docker Compose, Github CI, and Kubernetes deployment.
 
-## Start the application
+<br>
 
-Make sure you have Docker Desktop installed and running. Also, make sure that the ports 3000 and 3001 are open.
+## Dockerization
+
+Make sure you have Docker Desktop installed and running and make sure that the ports 3000 and 3001 are open.
 
 Then from the project's root, run:
 
@@ -27,6 +29,14 @@ Stop the application
 docker compose down
 ```
 
+<br>
+
+## CI Pipeline
+
+To test the CI pipeline, create your own fork or add a personal remote, then commit and push a small change to that remote. To verify the CI pipeline runs.
+
+<br>
+
 ## Kubernetes deployment
 
 First, create a cluster using
@@ -35,7 +45,7 @@ First, create a cluster using
 k3d cluster create -a 1 -m 1
 ```
 
-The repository also contains basic Kubernetes manifests in the k8s folder. To apply them, run:
+Then, at the root directory, apply the manifests which are inside of /k8s:
 
 ```bash
 kubectl apply -f k8s/namespace.yaml
