@@ -4,7 +4,7 @@ This project is a simple full-stack CRUD application built for the DevOps course
 
 ### Setup
 
-    - Make sure you have<b>Docker Desktop</b> - installed and running, and <b>K3D</b> installed.  Ports 3000 and 3001 are required to be open.
+- Make sure you have <b>Docker Desktop</b> - installed and running, and <b>K3D</b> installed.  Ports 3000 and 3001 are required to be open.
 
 <br>
 
@@ -24,7 +24,7 @@ Once the composition has fully started, you can check the frontend via:
 http://localhost:3000
 ```
 
-    and for a backend health check, you can use:
+and for a backend health check, you can use:
 
 ```url
 http://localhost:3001/health
@@ -32,7 +32,7 @@ http://localhost:3001/health
 
 <br>
 
-2. In order to be able to test Kubernetes - Stop the application:
+2. In order to be able to test Kubernetes - Stop the application and remove the containers with:
 
 ```bash
 docker compose down
@@ -57,7 +57,7 @@ git clone https://github.com/TaseZmaj/Continuous-Integration-and-Continuous-Deli
 git remote remove origin
 ```
 
-    - You can check to make sure they are removed with:
+You can check to make sure they are removed with:
 
 ```bash
 git remote -v
@@ -143,7 +143,7 @@ With that - the cluster is fully initialized. You can see the results via:
 http://devops-project.local:3000
 ```
 
-    and for a backend health check, you can use:
+and for a backend health check, you can use:
 
 ```url
 http://localhost:3001/health
