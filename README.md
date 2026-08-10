@@ -8,8 +8,6 @@ Make sure you have Docker Desktop installed and running and ports 3000 and 3001 
 
 <br>
 
----
-
 ## Dockerization
 
 1. At the project's root, run:
@@ -36,16 +34,12 @@ docker compose down
 <br>
 <br>
 
----
-
 ## CI Pipeline
 
 To test the CI pipeline, create your own fork or add a personal remote, then commit and push a small change to that remote. To verify the CI pipeline runs.
 
 <br>
 <br>
-
----
 
 ## Kubernetes deployment
 
