@@ -1,7 +1,7 @@
 FROM node:24-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --omit=dev
+RUN npm install --include=dev --foreground-scripts
 COPY . .
 EXPOSE 3001
 CMD ["npm", "start"]
