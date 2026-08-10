@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  namespace: dev-ops-project
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    # Native response header annotations (No CRDs required)
+    ingress.kubernetes.io/custom-response-headers: "Access-Control-Allow-Origin: *||Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS||Access-Control-Allow-Headers: DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization"
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 3001

@@ -1,8 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: dev-ops-project
+spec:
+  selector:
+    app: frontend #must match the deployment's spec.template.metadata.labels.app
+  ports:
+    - port: 80 #The port ingress is looking for
+      targetPort: 80 #The port the container is listening on
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: ci-demo
+  namespace: dev-ops-project
 spec:
   replicas: 1
   selector:
@@ -11,13 +24,13 @@ spec:
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend #must match the service's selector.app
     spec:
       containers:
         - name: frontend
-          image: your-dockerhub-username/ci-demo-frontend:latest
+          image: tasezmaj/devops-project-frontend:latest
           ports:
-            - containerPort: 80
+            - containerPort: 80 #The port the container is listening on
           livenessProbe:
             httpGet:
               path: /
@@ -30,34 +43,3 @@ spec:
               port: 80
             initialDelaySeconds: 5
             periodSeconds: 5
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend
-  namespace: ci-demo
-spec:
-  selector:
-    app: frontend
-  ports:
-    - port: 80
-      targetPort: 80
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: frontend-ingress
-  namespace: ci-demo
-spec:
-  ingressClassName: nginx
-  rules:
-    - host: ci-demo.local
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend
-                port:
-                  number: 80
