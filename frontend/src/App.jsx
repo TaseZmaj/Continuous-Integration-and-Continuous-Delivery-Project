@@ -68,7 +68,7 @@ function App() {
         }}
       >
         <h1 style={{ marginTop: 0, marginBottom: "0.5rem", color: "#1e293b" }}>
-          Simple CRUD App
+          To-Do List App
         </h1>
         <p style={{ marginTop: 0, marginBottom: "1.25rem", color: "#64748b" }}>
           Add, complete, or remove tasks from your list.
