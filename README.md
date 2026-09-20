@@ -4,7 +4,7 @@ This project is a simple full-stack CRUD application built for the DevOps course
 
 ### Setup
 
-- Make sure you have <b>Docker Desktop</b> - installed and running, and <b>K3D</b> installed.  Ports 3000 and 3001 are required to be open.
+- Make sure you have <b>Docker Desktop</b> - installed and running, and <b>K3D</b> installed.  Ports 3000, 3001, 3100, and 3101 are required to be open.
 
 <br>
 
@@ -43,15 +43,7 @@ docker compose down
 
 ## CI Pipeline
 
-1. Clone the repository:
-
-```bash
-git clone https://github.com/TaseZmaj/Continuous-Integration-and-Continuous-Delivery-Project.git
-```
-
-<br>
-
-2. Then remove the pre-existing remotes with:
+1. After cloning the repository, remove the pre-existing remotes with:
 
 ```bash
 git remote remove origin
@@ -65,7 +57,7 @@ git remote -v
 
 <br>
 
-3. Create your own remote git repository and add a remote.
+2. Create your own remote git repository and add a remote.
 
 ```bash
 git remote add origin <your_repository_url>
@@ -73,13 +65,13 @@ git remote add origin <your_repository_url>
 
 <br>
 
-4. Go to github, navigate to your repository -> Settings -> Secrets and Variables -> Actions and add 2 new repository secrets:
+3. Go to github, navigate to your repository -> Settings -> Secrets and Variables -> Actions and add 2 new repository secrets:
    - DOCKERHUB_USERNAME -> your own dockerhub username
    - DOCKERHUB_TOKEN -> generate a token from dockerhub and add the string here
 
 <br>
 
-5. Then make a small change in the code/readme somewhere, commit and push it to your repository. Immediately after that, open the Actions tab at your repository and watch the pipeline run. You can also check your dockerhub repository to see the new images that were just created.
+4. Then make a small change in the code/readme somewhere, commit and push it to your repository. Immediately after that, open the Actions tab at your repository and watch the pipeline run. You can also check your dockerhub repository to see the new images that were just created.
 
 <br>
 <br>
@@ -89,7 +81,7 @@ git remote add origin <your_repository_url>
 1. First, create a cluster using:
 
 ```bash
-k3d cluster create devops-project-cluster -p "3000:80@loadbalancer" -p "3001:80@loadbalancer" -s 1 -a 1
+k3d cluster create devops-project-cluster -p "3100:80@loadbalancer" -p "3101:80@loadbalancer" -s 1 -a 1
 ```
 
 <br>
@@ -140,11 +132,11 @@ With that - the cluster is fully initialized. You can see the results via:
 - Frontend:
 
 ```url
-http://devops-project.local:3000
+http://devops-project.local:3100
 ```
 
 and for a backend health check, you can use:
 
 ```url
-http://localhost:3001/health
+http://localhost:3101/health
 ```

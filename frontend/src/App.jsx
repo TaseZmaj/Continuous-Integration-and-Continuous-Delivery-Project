@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (window.location.hostname === "devops-project.local"
+    ? "http://localhost:3101"
+    : "http://localhost:3001");
 
 function App() {
   const [items, setItems] = useState([]);
